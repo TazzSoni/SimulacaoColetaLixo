@@ -82,12 +82,12 @@ to go
 
   make-new-car2 100 -8 -17 0
   make-new-car3 100 2 13 180
-  ;make-new-car4 100 12 13 180
-  ;make-new-car5 100 12 3 270
-  ;make-new-car6 100 2 3 270
-  ;make-new-car7 100 -8 -7 90
-  ;make-new-car8 100 12 -17 270
-  ;make-new-truck 60 -8 13 90
+  make-new-car4 100 12 13 180
+  make-new-car5 100 12 3 270
+  make-new-car6 100 2 3 270
+  make-new-car7 100 -8 -7 90
+  make-new-car8 100 12 -17 270
+  make-new-truck 60 -8 13 90
 
   if truck-died? [ stop ]
   set time ticks
@@ -113,7 +113,7 @@ end
 
 to make-new-car1 [ freq x y h ]
 
-  if (random-float 100 < freq) and not any? turtles-on patch x y and spawned-cars1 < 10 and time > 15 [
+  if (random-float 100 < freq) and not any? turtles-on patch x y and spawned-cars1 < 50 and time > 15 [
     create-cars 1 [
       setxy x y
       set heading h
@@ -125,7 +125,7 @@ to make-new-car1 [ freq x y h ]
 end
 
 to make-new-car2 [ freq x y h ]
-  if (random-float 100 < freq) and not any? turtles-on patch x y and spawned-cars2 < 10 and time > 75 [
+  if (random-float 100 < freq) and not any? turtles-on patch x y and spawned-cars2 < 70 and time > 75 [
     create-cars 1 [
       setxy x y
       set heading h
@@ -138,7 +138,7 @@ to make-new-car2 [ freq x y h ]
 end
 
 to make-new-car3 [ freq x y h ]
-  if (random-float 100 < freq) and not any? turtles-on patch x y and spawned-cars3 < 15 and time > 15[
+  if (random-float 100 < freq) and not any? turtles-on patch x y and spawned-cars3 < 75 and time > 15[
     create-carrs 1 [
       setxy x y
       set heading h
@@ -150,7 +150,7 @@ to make-new-car3 [ freq x y h ]
 end
 
 to make-new-car4 [ freq x y h ]
-  if (random-float 100 < freq) and not any? turtles-on patch x y and spawned-cars4 < 10 and time > 75[
+  if (random-float 100 < freq) and not any? turtles-on patch x y and spawned-cars4 < 80 and time > 75[
     create-cars 1 [
       setxy x y
       set heading h
@@ -162,7 +162,7 @@ to make-new-car4 [ freq x y h ]
 end
 
 to make-new-car5 [ freq x y h ]
-  if (random-float 100 < freq) and not any? turtles-on patch x y and spawned-cars5 < 10 and time > 15[
+  if (random-float 100 < freq) and not any? turtles-on patch x y and spawned-cars5 < 80 and time > 15[
     create-cars 1 [
       setxy x y
       set heading h
@@ -174,7 +174,7 @@ to make-new-car5 [ freq x y h ]
 end
 
 to make-new-car6 [ freq x y h ]
-  if (random-float 100 < freq) and not any? turtles-on patch x y and spawned-cars6 < 10 and time > 15[
+  if (random-float 100 < freq) and not any? turtles-on patch x y and spawned-cars6 < 60 and time > 15[
     create-cars 1 [
       setxy x y
       set heading h
@@ -186,7 +186,7 @@ to make-new-car6 [ freq x y h ]
 end
 
 to make-new-car7 [ freq x y h ]
-  if (random-float 100 < freq) and not any? turtles-on patch x y and spawned-cars7 < 10 and time > 150 [
+  if (random-float 100 < freq) and not any? turtles-on patch x y and spawned-cars7 < 50 and time > 150 [
     create-cars 1 [
       setxy x y
       set heading h
@@ -198,7 +198,7 @@ to make-new-car7 [ freq x y h ]
 end
 
 to make-new-car8 [ freq x y h ]
-  if (random-float 100 < freq) and not any? turtles-on patch x y and spawned-cars8 < 10 and time > 150  [
+  if (random-float 100 < freq) and not any? turtles-on patch x y and spawned-cars8 < 90 and time > 150  [
     create-cars 1 [
       setxy x y
       set heading h
@@ -485,7 +485,7 @@ INPUTBOX
 765
 231
 time-to-go
-150.0
+75.0
 1
 0
 Number
