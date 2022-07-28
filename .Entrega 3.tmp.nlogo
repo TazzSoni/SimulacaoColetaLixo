@@ -292,11 +292,11 @@ end
 
 to adjust-speed
 
-  ; Calcula o mínimo e máximo de speed
+  ;Calcula o mínimo e máximo de speed
   let min-speed max (list (speed - 4) 0)
   let max-speed min (list (speed + 2) 5)
 
-  ; Sett para ir o mais rápido possível
+  ;Sett para ir o mais rápido possível
   let target-speed max-speed
 
   let blocked-patch next-blocked-patch
@@ -319,6 +319,7 @@ end
 to-report breaking-distance-at [ speed-at-this-tick ]
 
   ; Caso freie no próximo tick, calcula a distância
+
   let min-speed-at-next-tick max (list (speed-at-this-tick - 4) 0)
   report speed-at-this-tick + min-speed-at-next-tick
 end
