@@ -292,11 +292,11 @@ end
 
 to adjust-speed
 
-  ;Calcula o mínimo e máximo de speed
+  ; Calcula o mínimo e máximo de speed
   let min-speed max (list (speed - 4) 0)
   let max-speed min (list (speed + 2) 5)
 
-  ;Sett para ir o mais rápido possível
+  ; Sett para ir o mais rápido possível
   let target-speed max-speed
 
   let blocked-patch next-blocked-patch
@@ -319,7 +319,6 @@ end
 to-report breaking-distance-at [ speed-at-this-tick ]
 
   ; Caso freie no próximo tick, calcula a distância
-
   let min-speed-at-next-tick max (list (speed-at-this-tick - 4) 0)
   report speed-at-this-tick + min-speed-at-next-tick
 end
@@ -500,113 +499,29 @@ Tempo de trabalho 08:00 às 17:00\n15 ticks = 1 hora\n15º tick = 07:00\n75º ti
 1
 
 @#$#@#$#@
-## WHAT IS IT?
+## O QUE É ISSO?
 
-In this model the turtles are cars traveling through an intersection.  The user has the ability to control the frequency of cars coming from each direction, the speed of the cars, and the timing of the light at the traffic intersection.  Once the frequency and speed of cars is selected, the user should run the simulation and adjust the timing of the traffic light so as to minimize the amount of waiting time of cars traveling through the intersection.
+Esta é uma simulação de coleta de lixo, onde temos a representação de um bairro com 12 vertices, onde nele 8 pares de partida/destino distintos disparam um número específicos de veículos cada e nosso alvo, o caminhão de coleta de lixo, percorre seu caminho passando por todos os vértices até voltar para seu vértice de origem. O usuário pode definir qual horário será a saída do caminhão de coleta e após o final da simulação, são mostrados valores de Tempo total do percurso e tempo parado. A simulação ocorre entre os ticks 0 e 150, sendo cada hora equivalente a 15 ticks e o tick 0 representando 06:00.
 
-## HOW IT WORKS
+## COMO FUNCIONA?
 
-The rules for each car are:
+As regras dos carros são:
+- Parar por carros a sua frente;
+- Reduzir a velocidade, caso veja que tenha tráfico a frente;
+- Caso haja espaço livre a frente, andar o mais rápido possível;
 
-- I can only go in the direction I started in, or stop.
 
-- I stop for cars in front of me and red lights, and I stop for a yellow light if I'm not already on it.
+## USO DA APLICAÇÃO
 
-- If I am moving quickly and I see that I will have to stop soon, I try to slow down enough to make sure I can stop in time, up to MAX-BRAKE.
+time-to-go -> Define o momento da partida do caminhão de lixo, cada 15 ticks equivalem a uma hora, sendo o tick 0 igual a 06:00.
+Ex.: time-to-go = 15, o caminhão sairá no tick 15 que é equivalente às 07:00.
 
-- If I see that I have free space in front of me, I speed up towards the SPEED-LIMIT, up to MAX-ACCEL.
+Total Time -> Recebe a contagem de ticks referente ao tempo total que o caminhão levou para percorrer o percurso e converte em valor de horas.
 
-- If I am on the same space as another car, we crash and die.
+Tempo Parado -> Recebe a contagem de ticks referente ao tempo total que o caminhão ficou parado durante o percurso e converte em valor de horas.
 
-## HOW TO USE IT
 
-WAIT-TIME-OVERALL shows how many cars are waiting during the given clock tick.
-
-WAIT-TIME-EASTBOUND shows how many eastbound cars are waiting during the given clock tick.
-
-WAIT-TIME-NORTHBOUND shows how many northbound cars are waiting during the given clock tick.
-
-CLOCK shows how many ticks have elapsed.
-
-Use the FREQ-EAST slider to select how often new eastbound cars travel on the road.
-
-Use the FREQ-NORTH slider to select how often new northbound cars travel on the road.
-
-Use the SPEED-LIMIT slider to select how fast the cars will travel.
-
-Use the MAX-ACCEL slider to determine how fast the cars can accelerate.
-
-Use the MAX-BRAKE slider to determine how fast the cars can decelerate.
-
-Use the GREEN-LENGTH slider to set how long the light will remain green.
-
-Use the YELLOW-LENGTH slider to set how long the light will remain yellow.
-
-Press GO ONCE to make the cars move once.
-
-Press GO to make the cars move continuously.
-
-To stop the cars, press the GO button again.
-
-## THINGS TO NOTICE
-
-Cars start out evenly spaced but over time, they form bunches. What kinds of patterns appear in the traffic flow?
-
-Under what conditions do the cars appear to be moving backwards?
-
-Gridlock happens when cars are unable to move because cars from the other direction are in their path.  What settings cause gridlock in this model?  What settings can be changed to end the gridlock?
-
-## THINGS TO TRY
-
-Try to answer the following questions before running the simulations.
-
-Record your predictions.
-
-Compare your predicted results with the actual results.
-
-- What reasoning led you to correct predictions?
-
-- What assumptions that you made need to be revised?
-
-Try different numbers of eastbound cars while keeping all other slider values the same.
-
-Try different numbers of northbound cars while keeping all other slider values the same.
-
-Try different values of SPEED-LIMIT while keeping all other slider values the same.
-
-Try different values of MAX-ACCEL while keeping all other slider values the same.
-
-Try different values of GREEN-LENGTH and YELLOW-LENGTH while keeping all other slider values the same.
-
-For all of the above cases, consider the following:
-
-- What happens to the waiting time of eastbound cars?
-
-- What happens to the waiting time of northbound cars?
-
-- What happens to the overall waiting time?
-
-- What generalizations can you make about the impact of each variable on the waiting time of cars?
-
-- What kind of relationship exists between the number of cars and the waiting time they experience?
-
-- What kind of relationship exists between the speed of cars and the waiting time they experience?
-
-- What kind of relationship exists between the number of ticks of green light and the waiting time cars experience?
-
-Use your answers to the above questions to come up with a strategy for minimizing the waiting time of cars.
-
-What factor (or combination of factors) has the most influence over the waiting time experienced by the cars?
-
-## EXTENDING THE MODEL
-
-Find a realistic way to eliminate all crashes by only changing car behavior.
-
-Allow different light lengths for each direction in order to control wait time better.
-
-Is there a better way to measure the efficiency of an intersection than the current number of stopped cars?
-
-## RELATED MODELS
+## MODELOS R
 
 - "Traffic Basic": a simple model of the movement of cars on a highway.
 
@@ -626,33 +541,9 @@ Is there a better way to measure the efficiency of an intersection than the curr
 
 - "Gridlock Alternate HubNet": a version of "Gridlock HubNet" where students can enter NetLogo code to plot custom metrics.
 
-## HOW TO CITE
 
-If you mention this model or the NetLogo software in a publication, we ask that you include the citations below.
 
-For the model itself:
-
-* Wilensky, U. (1998).  NetLogo Traffic Intersection model.  http://ccl.northwestern.edu/netlogo/models/TrafficIntersection.  Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.
-
-Please cite the NetLogo software as:
-
-* Wilensky, U. (1999). NetLogo. http://ccl.northwestern.edu/netlogo/. Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.
-
-## COPYRIGHT AND LICENSE
-
-Copyright 1998 Uri Wilensky.
-
-![CC BY-NC-SA 3.0](http://ccl.northwestern.edu/images/creativecommons/byncsa.png)
-
-This work is licensed under the Creative Commons Attribution-NonCommercial-ShareAlike 3.0 License.  To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/3.0/ or send a letter to Creative Commons, 559 Nathan Abbott Way, Stanford, California 94305, USA.
-
-Commercial licenses are also available. To inquire about commercial licenses, please contact Uri Wilensky at uri@northwestern.edu.
-
-This model was created as part of the project: CONNECTED MATHEMATICS: MAKING SENSE OF COMPLEX PHENOMENA THROUGH BUILDING OBJECT-BASED PARALLEL MODELS (OBPML).  The project gratefully acknowledges the support of the National Science Foundation (Applications of Advanced Technologies Program) -- grant numbers RED #9552950 and REC #9632612.
-
-This model was converted to NetLogo as part of the projects: PARTICIPATORY SIMULATIONS: NETWORK-BASED DESIGN FOR SYSTEMS LEARNING IN CLASSROOMS and/or INTEGRATED SIMULATION AND MODELING ENVIRONMENT. The project gratefully acknowledges the support of the National Science Foundation (REPP & ROLE programs) -- grant numbers REC #9814682 and REC-0126227. Converted from StarLogoT to NetLogo, 2002.
-
-<!-- 1998 2002 -->
+<!--2022 -->
 @#$#@#$#@
 default
 true
